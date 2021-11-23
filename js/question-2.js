@@ -1,12 +1,27 @@
+// Show loader on start.
+document.getElementById("loader").style = "display: block";
+
+// Get data from API.
 const apiCall = fetch('https://api.rawg.io/api/games?dates=2019-01-01,2019-12-31&ordering=-rating&key=2642d44e9faf43be9df0277e0d3b2e0e')
 .then(apiResponse => apiResponse.json())
-.then(games => {
-    games.results.forEach((game,index) => {
+.then(data => {
+    // Loop results
+    data.results.forEach((game,index) => {
         if(index < 8){
         console.log(game)
+
+        // Output result on page.
         output(game)
         }
     });
+
+    // API is a bit fast, add a little delay so you can see my nice loader :)
+    setTimeout(function() {
+        // Hide loader.
+        document.getElementById("loader").style="display:none";
+    }, 2000);   // Milliseconds
+
+    
 })
 
 function output (game) {
