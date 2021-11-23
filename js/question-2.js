@@ -19,17 +19,18 @@ const apiCall = fetch('https://api.rawg.io/api/games?dates=2019-01-01,2019-12-31
     setTimeout(function() {
         // Hide loader.
         document.getElementById("loader").style="display:none";
-    }, 2000);   // Milliseconds
+    }, 2800);   // Milliseconds
 
     
 })
 
 function output (game) {
+    //Create HTML
     const wrapper=document.createElement("div")
     const name = document.createElement("p");
     const rating = document.createElement("p");
     const tags  = document.createElement("p");
-
+    
     name.innerHTML= `Name: ${game.name}`
     rating.innerHTML = `Rating: ${game.rating}`
     tags.innerHTML = `Tags: ${game.tags.length}`
